@@ -1,0 +1,67 @@
+<form method="POST" action="/projects/create">
+    
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+    <div class="form-group">
+        <label for="name"> Nombre</label> 
+        <input name="name" type="text">
+        
+    </div>
+
+    <div class="form-group">
+        <label for="description"> Descripción</label> 
+        <textarea name="description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="status"> Estado </label> 
+            <select name="status">
+                <option value="0"> propuesta</option>
+                <option value="1">en progreso</option>
+                <option value="2">terminado</option>
+            </select>
+    </div>
+
+    <div class="form-group">
+        <label for="dateinit"> Fecha Inicio </label> 
+        <input name="dateinit" type="date">
+    </div>
+
+    <div class="form-group">
+        <label for="dateend"> Fecha Termino </label> 
+        <input name="dateend" type="date">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+    <form class="form-inline">
+        <select name="status">
+                <option value="0"> propuesta</option>
+                <option value="1">en progreso</option>
+                <option value="2">terminado</option>
+            </select>
+        <button class="submit">Search</button>
+    </form>
+
+<table class="table">
+<tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Estado</th>
+    <th>Fecha Inicio</th>
+    <th>Fecha termino</th>
+</tr>
+<% @projects.each do |project| %>
+<tr>
+<td><%= project.name%></td>
+    <td><%= project.description%></td>
+    <td><%= project.status%></td>
+    <td><%= project.dateinit%></td>
+    <td><%= project.dateend %></td>
+</tr>
+
+<% end %>
+</table>
